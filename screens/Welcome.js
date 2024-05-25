@@ -1,10 +1,18 @@
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
+import { Touchable } from "react-native-web";
 
-const coffeHome = require("../assets/images/home-coffee.png");
+const coffeeHome = require("../assets/images/home-coffee.png");
 const { width, height } = Dimensions.get("window");
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>
@@ -14,11 +22,16 @@ const Welcome = () => {
         Welcome to our cozy coffee corner, where every cup is a delightful for
         you.
       </Text>
-      <View style={styles.buttonContainer}>
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.navigate("HomeScreen")}
+        // activeOpacity={0.7}
+        underlayColor="darkred"
+      >
         <Text style={styles.getStartedButtonText}>Get Started</Text>
-      </View>
+      </TouchableOpacity>
       <Image
-        source={coffeHome}
+        source={coffeeHome}
         style={[styles.backgroundImage, { zIndex: -1 }]}
       />
     </View>
@@ -50,12 +63,10 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontSize: 16,
-    // fontWeight: "bold",
     color: "#ffffff",
     maxWidth: width - 100,
     textAlign: "center",
     marginBottom: 10,
-    // maxWidth: 260,
   },
   buttonContainer: {
     backgroundColor: "brown",

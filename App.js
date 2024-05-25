@@ -1,8 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
-import Welcome from "./screens/Welcome";
 import { StatusBar, StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+
+import Welcome from "./screens/Welcome";
+import Home from "./screens/Home";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -23,6 +25,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="WelcomeScreen" component={Welcome} />
+          <Stack.Screen name="HomeScreen" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
